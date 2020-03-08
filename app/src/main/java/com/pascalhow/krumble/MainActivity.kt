@@ -11,12 +11,23 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val cookie = Cookie(
+            "Mr Peanut",
+            R.drawable.cookie_image,
+            "Loves taking long walks on the beach"
+        )
+
+        showCookie(cookie)
+    }
+
+    private fun showCookie(cookie: Cookie) {
         var imgCookie: ImageView = findViewById(R.id.imgCookie)
         var lblName: TextView = findViewById(R.id.lblName)
         var lblStory: TextView = findViewById(R.id.lblStory)
 
-        imgCookie.setImageResource(R.drawable.cookie_image)
-        lblName.text=  "Mr Peanut"
-        lblStory.text = "Loves taking long walks on the beach"
+        imgCookie.setImageResource(cookie.image)
+        lblName.text = cookie.name
+        lblStory.text = cookie.story
+
     }
 }
