@@ -26,17 +26,27 @@ class MainActivity : AppCompatActivity() {
         val cookie = Cookie(
             "Mr Peanut",
             R.drawable.cookie_image,
-            "Loves taking long walks on the beach"
+            "Loves taking long walks on the beach",
+            "Liked",
+            "Dislike"
         )
 
         showCookie(cookie)
 
         btnLike.setOnClickListener {
-            Toast.makeText(this@MainActivity, "Liked", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                this@MainActivity,
+                cookie.likedMessage,
+                Toast.LENGTH_SHORT
+            ).show()
         }
 
         btnDislike.setOnClickListener {
-            Toast.makeText(this@MainActivity, "Disliked", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                this@MainActivity,
+                cookie.dislikedMessage,
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 
@@ -44,6 +54,5 @@ class MainActivity : AppCompatActivity() {
         imgCookie.setImageResource(cookie.image)
         lblName.text = cookie.name
         lblStory.text = cookie.story
-
     }
 }
