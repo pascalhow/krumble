@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var lblStory: TextView
 
     private val cookies = generateCookies()
+    private var index = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,24 +26,38 @@ class MainActivity : AppCompatActivity() {
         val btnLike: Button = findViewById(R.id.btnLike)
         val btnDislike: Button = findViewById(R.id.btnDislike)
 
-        val cookie = cookies[0]
-
-        showCookie(cookie)
+        showCookie(cookies[index])
 
         btnLike.setOnClickListener {
             Toast.makeText(
                 this@MainActivity,
-                cookie.likedMessage,
+                cookies[index].likedMessage,
                 Toast.LENGTH_SHORT
             ).show()
+
+            index++
+
+            if (index == cookies.size) {
+                index = 0
+            }
+
+            showCookie(cookies[index])
         }
 
         btnDislike.setOnClickListener {
             Toast.makeText(
                 this@MainActivity,
-                cookie.dislikedMessage,
+                cookies[index].dislikedMessage,
                 Toast.LENGTH_SHORT
             ).show()
+
+            index++
+
+            if (index == cookies.size) {
+                index = 0
+            }
+
+            showCookie(cookies[index])
         }
     }
 
