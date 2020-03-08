@@ -13,6 +13,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var lblName: TextView
     private lateinit var lblStory: TextView
 
+    private val cookies = generateCookies()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -23,13 +25,7 @@ class MainActivity : AppCompatActivity() {
         val btnLike: Button = findViewById(R.id.btnLike)
         val btnDislike: Button = findViewById(R.id.btnDislike)
 
-        val cookie = Cookie(
-            "Mr Peanut",
-            R.drawable.cookie_image,
-            "Loves taking long walks on the beach",
-            "Liked",
-            "Dislike"
-        )
+        val cookie = cookies[0]
 
         showCookie(cookie)
 
@@ -48,6 +44,25 @@ class MainActivity : AppCompatActivity() {
                 Toast.LENGTH_SHORT
             ).show()
         }
+    }
+
+    private fun generateCookies(): List<Cookie> {
+        return arrayListOf(
+            Cookie(
+                "Mr Peanut",
+                R.drawable.cookie_image,
+                "Loves taking long walks on the beach",
+                "Liked",
+                "Dislike"
+            ),
+            Cookie(
+                "Ms Choc Chip",
+                R.drawable.chocolate_cookie,
+                "Dark and mysterious",
+                "Yay",
+                "How dare you!"
+            )
+        )
     }
 
     private fun showCookie(cookie: Cookie) {
