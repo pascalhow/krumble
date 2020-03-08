@@ -1,8 +1,10 @@
 package com.pascalhow.krumble
 
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
@@ -18,6 +20,8 @@ class MainActivity : AppCompatActivity() {
         imgCookie = findViewById(R.id.imgCookie)
         lblName = findViewById(R.id.lblName)
         lblStory = findViewById(R.id.lblStory)
+        val btnLike: Button = findViewById(R.id.btnLike)
+        val btnDislike: Button = findViewById(R.id.btnDislike)
 
         val cookie = Cookie(
             "Mr Peanut",
@@ -26,6 +30,14 @@ class MainActivity : AppCompatActivity() {
         )
 
         showCookie(cookie)
+
+        btnLike.setOnClickListener {
+            Toast.makeText(this@MainActivity, "Liked", Toast.LENGTH_SHORT).show()
+        }
+
+        btnDislike.setOnClickListener {
+            Toast.makeText(this@MainActivity, "Disliked", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun showCookie(cookie: Cookie) {
